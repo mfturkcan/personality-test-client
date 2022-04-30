@@ -1,0 +1,18 @@
+<form method="post" id="question-form" #questionForm="ngForm" (ngSubmit)="handleSubmit(questionForm.value)">
+
+  <div name="answers" *ngFor="let question of questions; let i = index">
+    <div class="questionText mx-auto shadow" id="question">
+      {{question.question}}
+    </div>
+    <label class="check">
+      <input type="radio" value="true" [name]="'answer'+i" id="true_answer" ngModel>
+      <span>{{question.answerTrue}}</span>
+    </label>
+    <label class="check">
+      <input type="radio" value="false" [name]="'answer'+i" id="false_answer" ngModel>
+      <span>{{question.answerFalse}}</span>
+    </label>
+  </div>
+
+  <button type="submit">Finish</button>
+</form>
