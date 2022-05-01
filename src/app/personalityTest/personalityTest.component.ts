@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Answer } from '../domains/Answer';
 import { Question } from '../domains/Question';
+import { Gender } from '../enums/gender';
 
 @Component({
-  selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.css']
+  selector: 'app-personality-test',
+  templateUrl: './personalityTest.component.html',
+  styleUrls: ['./personalityTest.component.css']
 })
-export class TestComponent implements OnInit {
+export class PersonalityTestComponent implements OnInit {
   questions: Question[] = [];
   answers: Answer[] = [];
+  name!: string;
+  gender!: Gender;
+  email!: string;
+  isPublic!: boolean;
 
   constructor() { }
 
@@ -26,10 +31,20 @@ export class TestComponent implements OnInit {
   }
 
   handleSubmit(formValue: any) {
+    this.name = formValue["name"];
+    this.gender = formValue["gender"];
+    this.email = formValue["email"];
+    this.isPublic = formValue["isPublic"];
+
     for (let i = 0; i < this.questions.length; i++) {
-      this.answers.push(new Answer(formValue["answer" + i], this.questions[i]));
+
+      let answer = new Answer(formValue["answer" + i],
+        this.questions[i]);
+
+      this.answers.push(answer);
     }
     console.log(this.answers);
+    console.log(formValue);
   }
 
 }

@@ -26,7 +26,7 @@ export class HeaderComponent {
     { routePath: "/traits", routeText: "PERSONALITY TRAITS" },
     { routePath: "/articles", routeText: "ARTICLES" },
     { routePath: "/results", routeText: "RESULTS" },
-    { routePath: "/test", routeText: "TAKE THE TEST" },
+    { routePath: "/personalityTest", routeText: "TAKE THE TEST" },
   ]
 
   activeRoute: string = "";

@@ -1,3 +1,4 @@
+import { Gender } from "../enums/gender";
 import { Question } from "./Question";
 
 export class Answer {
