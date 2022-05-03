@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Result } from '../domains/Result';
+import { UserAnswer } from '../domains/UserAnswer';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,13 @@ export class ResultService {
     return this.results;
   }
 
-  addResult(result: Result) {
+  sendResult(userAnswer: UserAnswer): Result | undefined {
     // Call httpClient for adding result
+    let result;
+    this.httpClient.post<UserAnswer>(this.url, userAnswer).subscribe((data: any) => {
+      result = data;
+    });
+
+    return result;
   }
 }

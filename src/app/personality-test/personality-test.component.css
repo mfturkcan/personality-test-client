@@ -101,7 +101,12 @@ label.radio input:hover+span {
   transition-delay: 50ms;
 }
 
-.end-button:hover {
+.end-button:disabled {
+  color: grey;
+  border-color: grey;
+}
+
+.end-button:enabled:hover {
   background-color: #06ee9a !important;
   color: white;
   transform: translateX(10px);
@@ -160,4 +165,18 @@ label.radio input:hover+span {
   padding: 10px;
   margin-bottom: 5px;
   background-color: #06ee9a;
+}
+
+.form-error {
+  color: red;
+  font-style: italic;
+  text-decoration: underline;
+  margin-bottom: 25px;
+}
+
+.form-warning {
+  font-style: italic;
+  text-decoration: underline;
+  margin-bottom: 25px;
+  cursor: pointer;
 }

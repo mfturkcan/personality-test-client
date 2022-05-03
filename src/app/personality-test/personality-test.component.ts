@@ -1,8 +1,13 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, Injectable, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Answer } from '../domains/Answer';
 import { Question } from '../domains/Question';
+import { Result } from '../domains/Result';
+import { UserAnswer } from '../domains/UserAnswer';
 import { Gender } from '../enums/gender';
 import { QuestionService } from '../services/question.service';
+import { ResultService } from '../services/result.service';
 
 @Component({
   selector: 'app-personality-test',
@@ -20,17 +25,28 @@ export class PersonalityTestComponent implements OnInit {
   email!: string;
   isPublic!: boolean;
 
-  constructor(private questionService: QuestionService) { }
+  constructor(private questionService: QuestionService,
+    private resultService: ResultService,
+    private scroll: ViewportScroller,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getQuestions();
   }
 
+  scrollToTop() {
+    this.scroll.scrollToPosition([0, 0]);
+  }
+
   getQuestions() {
-    this.questions = this.questionService.getQuestions();
+    this.questionService.getQuestions().subscribe(observable => {
+      this.questions = observable;
+    });
   }
 
   handleSubmit(formValue: any) {
+    this.answers = [];
+
     this.name = formValue["name"];
     this.gender = formValue["gender"];
     this.email = formValue["email"];
@@ -43,8 +59,14 @@ export class PersonalityTestComponent implements OnInit {
 
       this.answers.push(answer);
     }
-    console.log(this.answers);
-    console.log(formValue);
+
+    let user = new UserAnswer(this.answers, this.gender, this.name, this.email, this.isPublic);
+
+    let result = this.resultService.sendResult(user);
+
+    if (result) {
+      this.router.navigate(['/results', result.id]);
+    }
   }
 
 }

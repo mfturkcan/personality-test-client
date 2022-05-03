@@ -2,19 +2,19 @@ import { Gender } from "../enums/gender";
 import { Answer } from "./Answer";
 
 export class UserAnswer {
-  constructor(answers: Answer[],
+  constructor(questionAnswers: Answer[],
     gender: Gender,
     name: string,
     email: string,
     isPublic: boolean) {
-    this.answers = answers;
+    this.questionAnswers = questionAnswers;
     this.gender = gender;
     this.name = name;
     this.email = email;
     this.isPublic = isPublic;
   }
 
-  answers: Answer[];
+  questionAnswers: Answer[];
   gender: Gender;
   name: string;
   email: string;
