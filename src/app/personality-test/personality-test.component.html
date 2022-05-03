@@ -40,17 +40,35 @@
   </div>
 
   <div name="answers" *ngFor="let question of questions; let i = index">
-    <div class="questionText mx-auto shadow" id="question">
-      {{question.question}}
+    <div class="questionText mx-auto shadow" id="question" *ngIf="question.questionNumber == 26">
+      Which word in each pair appeals to you more?
     </div>
-    <label class="check">
-      <input type="radio" value="true" [name]="'answer'+i" id="true_answer" ngModel>
-      <span>{{question.answerTrue}}</span>
-    </label>
-    <label class="check">
-      <input type="radio" value="false" [name]="'answer'+i" id="false_answer" ngModel>
-      <span>{{question.answerFalse}}</span>
-    </label>
+
+    <div class="questionText mx-auto shadow" id="question" *ngIf="question.question">
+      {{question.questionNumber+ '.\t' + question.question}}
+    </div>
+    <div [class.question-card]="!question.question">
+      <label [class]="question.question ? 'check': 'question-part'">
+        <input type="radio" value="true" [name]="'answer'+i" id="true_answer" ngModel>
+        <span>{{question.answerTrue}}</span>
+      </label>
+      <div *ngIf="!question.question" class="user-result-circle text-center ">
+        {{i}}
+      </div>
+
+      <label [class]="question.question ? 'check': 'question-part'">
+        <input type="radio" value="false" [name]="'answer'+i" id="false_answer" ngModel>
+        <span>{{question.answerFalse}}</span>
+      </label>
+
+      <label [class]="question.question ? 'check': 'question-part'" *ngIf="question.answerAlternative">
+        <input type="radio" value="false" [name]="'answer'+i" id="alternative_answer" ngModel>
+        <span>{{question.answerAlternative}}</span>
+      </label>
+    </div>
+    <div *ngIf="!question.question">
+      <br /> <br />
+    </div>
   </div>
 
 

@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { Answer } from '../domains/Answer';
 import { Question } from '../domains/Question';
 import { Gender } from '../enums/gender';
+import { QuestionService } from '../services/question.service';
 
 @Component({
   selector: 'app-personality-test',
-  templateUrl: './personalityTest.component.html',
-  styleUrls: ['./personalityTest.component.css']
+  templateUrl: './personality-test.component.html',
+  styleUrls: ['./personality-test.component.css']
+})
+@Injectable({
+  providedIn: 'root'
 })
 export class PersonalityTestComponent implements OnInit {
   questions: Question[] = [];
@@ -16,18 +20,14 @@ export class PersonalityTestComponent implements OnInit {
   email!: string;
   isPublic!: boolean;
 
-  constructor() { }
+  constructor(private questionService: QuestionService) { }
 
   ngOnInit(): void {
     this.getQuestions();
   }
 
   getQuestions() {
-    this.questions.push(
-      new Question(0, "test", 2, "test", "test", "test", "test", "test"),
-      new Question(1, "test1", 2, "test1", "test1", "test1", "test1", "test1"),
-      new Question(2, "test2", 2, "test2", "test2", "test2", "test2", "test2")
-    );
+    this.questions = this.questionService.getQuestions();
   }
 
   handleSubmit(formValue: any) {

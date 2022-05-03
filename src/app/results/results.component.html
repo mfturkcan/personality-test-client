@@ -1,1 +1,13 @@
-<p>results works!</p>
+<h1>Results</h1>
+
+<div *ngFor="let result of results; let i = index;" class="row w-50">
+  <div class="col-12">
+    <div class="row user-result justify-content-center">
+      <div class="user-result-circle bg-primary text-center float-left">{{result.personName[0]}}</div>
+      <span>{{result.personName}}</span>
+      <span>{{result.email}}</span>
+      <span>{{result.gender}}</span>
+      <a [routerLink]="['/userResult',result.id]">See Details</a>
+    </div>
+  </div>
+</div>

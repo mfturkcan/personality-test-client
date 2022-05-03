@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { TraitsComponent } from './traits/traits.component';
-import { PersonalityTestComponent } from './personalityTest/personalityTest.component';
 import { ArticlesComponent } from './articles/articles.component';
 import "bootstrap";
 import { FooterComponent } from './footer/footer.component';
@@ -13,7 +12,9 @@ import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
 import { ResultsComponent } from './results/results.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { ResultService } from './result.service';
+import { ResultService } from './services/result.service';
+import { UserResultComponent } from './user-result/user-result.component';
+import { PersonalityTestComponent } from './personality-test/personality-test.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ResultService } from './result.service';
     FooterComponent,
     HeaderComponent,
     ResultsComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    UserResultComponent
   ],
   imports: [
     BrowserModule,

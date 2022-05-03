@@ -1,0 +1,14 @@
+.user-result-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 25px;
+  font-size: 18px;
+  color: #fff;
+}
+
+.user-result {
+  align-items: center;
+
+  height: 100px;
+  gap: 10px;
+}

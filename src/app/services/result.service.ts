@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Result } from './domains/Result';
+import { Result } from '../domains/Result';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +19,10 @@ export class ResultService {
       this.results = data;
     });
 
+    return this.results;
+  }
+
+  addResult(result: Result) {
+    // Call httpClient for adding result
   }
 }
