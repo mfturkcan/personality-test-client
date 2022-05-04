@@ -14,9 +14,6 @@
     "node": "16.13.0"
   },
   "dependencies": {
-    "@angular/cli": "~13.3.4",
-    "@angular/compiler-cli": "~13.3.5",
-    "@angular-devkit/build-angular": "~13.3.4",
     "@angular/animations": "~13.3.5",
     "@angular/common": "~13.3.5",
     "@angular/compiler": "~13.3.5",
@@ -35,6 +32,9 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@angular/cli": "~13.3.4",
+    "@angular/compiler-cli": "~13.3.5",
+    "@angular-devkit/build-angular": "~13.3.4",
     "@types/bootstrap": "^5.1.10",
     "@types/jasmine": "~3.10.0",
     "@types/lodash": "^4.14.182",
