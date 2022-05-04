@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, Observable, Subject, Subscription } from 'rxjs';
 import { Result } from '../domains/Result';
 import { UserAnswer } from '../domains/UserAnswer';
 
@@ -14,22 +15,17 @@ export class ResultService {
 
   }
 
-  getResults() {
-    this.httpClient.get<Result>(this.url).subscribe((data: any) => {
-      console.log(data);
-      this.results = data;
-    });
-
-    return this.results;
+  getResults(): Promise<Result[]> {
+    return this.httpClient.get<Result>(this.url).pipe(map((data: any) => { return data; })).toPromise();
   }
 
-  sendResult(userAnswer: UserAnswer): Result | undefined {
+  sendResult(userAnswer: UserAnswer): Observable<Result> {
     // Call httpClient for adding result
-    let result;
+    let result = new Subject<Result>();
     this.httpClient.post<UserAnswer>(this.url, userAnswer).subscribe((data: any) => {
-      result = data;
+      result.next(data);
     });
 
-    return result;
+    return result.asObservable();
   }
 }

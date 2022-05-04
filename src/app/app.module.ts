@@ -15,6 +15,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { ResultService } from './services/result.service';
 import { UserResultComponent } from './user-result/user-result.component';
 import { PersonalityTestComponent } from './personality-test/personality-test.component';
+import { SpinnerComponent } from './core/spinner/spinner.component';
+import { ToastComponent } from './core/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { PersonalityTestComponent } from './personality-test/personality-test.co
     HeaderComponent,
     ResultsComponent,
     ErrorPageComponent,
-    UserResultComponent
+    UserResultComponent,
+    SpinnerComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,

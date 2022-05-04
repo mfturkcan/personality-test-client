@@ -6,17 +6,17 @@ export class UserAnswer {
     gender: Gender,
     name: string,
     email: string,
-    isPublic: boolean) {
+    publicResult: boolean) {
     this.questionAnswers = questionAnswers;
     this.gender = gender;
     this.name = name;
     this.email = email;
-    this.isPublic = isPublic;
+    this.publicResult = publicResult;
   }
 
   questionAnswers: Answer[];
   gender: Gender;
   name: string;
   email: string;
-  isPublic: boolean;
+  publicResult: boolean;
 }

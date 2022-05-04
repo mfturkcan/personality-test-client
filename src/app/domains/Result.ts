@@ -9,7 +9,7 @@ export class Result {
     email: string,
     gender: Gender,
     traits: PersonalityTrait[],
-    isPublic: boolean,
+    publicResult: boolean,
     date: Date
   ) {
     this.id = id;
@@ -17,7 +17,7 @@ export class Result {
     this.email = email;
     this.gender = gender;
     this.traits = traits;
-    this.isPublic = isPublic;
+    this.publicResult = publicResult;
     this.date = date;
   }
 
@@ -27,6 +27,6 @@ export class Result {
   email: string;
   gender: Gender;
   traits: PersonalityTrait[];
-  isPublic: boolean;
+  publicResult: boolean;
   date: Date;
 }

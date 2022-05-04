@@ -69,7 +69,7 @@
       </label>
 
       <label [class]="question.question ? 'check': 'question-part'" *ngIf="question.answerAlternative">
-        <input type="radio" value="false" required [name]="'answer'+i" id="alternative_answer" ngModel>
+        <input type="radio" [value]="true" required [name]="'answer'+i" id="alternative_answer" ngModel>
         <span>{{question.answerAlternative}}</span>
       </label>
     </div>

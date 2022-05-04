@@ -1,6 +1,7 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SpinnerService } from '../core/spinner/spinner.service';
 import { Answer } from '../domains/Answer';
 import { Question } from '../domains/Question';
 import { Result } from '../domains/Result';
@@ -28,7 +29,8 @@ export class PersonalityTestComponent implements OnInit {
   constructor(private questionService: QuestionService,
     private resultService: ResultService,
     private scroll: ViewportScroller,
-    private router: Router) { }
+    private router: Router,
+    private spinnerService: SpinnerService) { }
 
   ngOnInit(): void {
     this.getQuestions();
@@ -39,12 +41,20 @@ export class PersonalityTestComponent implements OnInit {
   }
 
   getQuestions() {
-    this.questionService.getQuestions().subscribe(observable => {
-      this.questions = observable;
+    this.spinnerService.requestStarted();
+    this.questionService.getQuestions().then(data => {
+      this.questions = data.sort((q1, q2) => {
+        if (q1.questionNumber < q2.questionNumber) return -1;
+        else if (q1.questionNumber == q2.questionNumber) return 0;
+        else return 1;
+      });;
+
+      this.spinnerService.requestEnded();
     });
   }
 
   handleSubmit(formValue: any) {
+    this.spinnerService.requestStarted();
     this.answers = [];
 
     this.name = formValue["name"];
@@ -62,11 +72,13 @@ export class PersonalityTestComponent implements OnInit {
 
     let user = new UserAnswer(this.answers, this.gender, this.name, this.email, this.isPublic);
 
-    let result = this.resultService.sendResult(user);
+    this.resultService.sendResult(user).subscribe(result => {
+      if (result) {
+        this.router.navigate(['/userResult', result.id]);
+        this.spinnerService.requestEnded();
+      }
+    });
 
-    if (result) {
-      this.router.navigate(['/results', result.id]);
-    }
   }
 
 }

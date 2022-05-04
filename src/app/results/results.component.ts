@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SpinnerService } from '../core/spinner/spinner.service';
 import { Result } from '../domains/Result';
 import { ResultService } from '../services/result.service';
 
@@ -10,7 +11,7 @@ import { ResultService } from '../services/result.service';
 export class ResultsComponent implements OnInit {
 
   results: Result[] = [];
-  constructor(private resultService: ResultService) {
+  constructor(private resultService: ResultService, private spinnerService: SpinnerService) {
 
     // TODO: insert after guaranitee that it wont be null.
     // this.results = this.resultService.getResults().sort((r1, r2) => r1.date < r2.date ? -1 : 1);
@@ -21,7 +22,12 @@ export class ResultsComponent implements OnInit {
   }
 
   getResults() {
-    this.results = this.resultService.getResults();
+    this.spinnerService.requestStarted();
+    this.resultService.getResults().then(res => {
+      this.results = res;
+      this.spinnerService.requestEnded();
+    });
+
   }
 
 }

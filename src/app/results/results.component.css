@@ -1,9 +1,8 @@
 .user-result-circle {
-  width: 30px;
-  height: 30px;
   border-radius: 25px;
   font-size: 18px;
   color: #fff;
+  padding: 3px;
 }
 
 .user-result {
@@ -11,4 +10,8 @@
 
   height: 100px;
   gap: 10px;
+}
+
+td {
+  padding: 15px;
 }

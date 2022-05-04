@@ -1,13 +1,36 @@
-<h1>Results</h1>
+<h1 class="pb-5">Results</h1>
 
-<div *ngFor="let result of results; let i = index;" class="row w-50">
-  <div class="col-12">
-    <div class="row user-result justify-content-center">
-      <div class="user-result-circle bg-primary text-center float-left">{{result.personName[0]}}</div>
-      <span>{{result.personName}}</span>
-      <span>{{result.email}}</span>
-      <span>{{result.gender}}</span>
-      <a [routerLink]="['/userResult',result.id]">See Details</a>
-    </div>
-  </div>
-</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        <!--Icon-->
+      </th>
+      <th>Person Name</th>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>Date</th>
+      <th>
+        <!--See details-->
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let result of results; let i = index;" class="w-50">
+      <td>
+        <div class="user-result-circle bg-primary text-center">{{result.personName[0]}}</div>
+      </td>
+      <td>{{result.personName}}</td>
+      <td>{{result.email}}</td>
+      <td>{{result.gender}}</td>
+      <td>{{result.date | date : 'mediumDate'}}</td>
+      <td><a [routerLink]="['/userResult',result.id]">See Details</a></td>
+
+      <!-- <div class="row user-result justify-content-center">
+
+  </div> -->
+    </tr>
+  </tbody>
+</table>

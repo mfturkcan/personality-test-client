@@ -6,18 +6,18 @@ export class PersonalityTrait {
   constructor(
     traitId: number,
     totalPoint: number,
-    personalityGroup: PersonalityGroups,
-    personalityType: PersonalityTypes
+    personalityTraitGroup: string,
+    personalityTraitType: string
   ) {
     this.traitId = traitId
     this.totalPoint = totalPoint
-    this.personalityGroup = personalityGroup
-    this.personalityType = personalityType
+    this.personalityTraitGroup = personalityTraitGroup
+    this.personalityTraitType = personalityTraitType
   }
 
 
   traitId: number;
   totalPoint: number;
-  personalityGroup: PersonalityGroups;
-  personalityType: PersonalityTypes;
+  personalityTraitGroup: string;
+  personalityTraitType: string;
 }

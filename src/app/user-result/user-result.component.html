@@ -1,1 +1,16 @@
-<p>user-result works!</p>
+<div *ngIf="result">
+  <h3>{{result.personName}}</h3>
+  <div>{{result.gender}}</div>
+  <div>{{result.email}}</div>
+  <div>{{result.date}}</div>
+
+  <div *ngFor="let trait of traitResults">
+    <h4>{{trait.groupName}}</h4>
+    <div>
+      {{trait.firstTraitName + ' : ' + trait.firstTraitPoint}}
+    </div>
+    <div>
+      {{trait.secondTraitName + ' : ' + trait.secondTraitPoint}}
+    </div>
+  </div>
+</div>
