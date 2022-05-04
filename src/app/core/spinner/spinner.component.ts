@@ -25,4 +25,8 @@ export class SpinnerComponent implements OnInit {
     });
   }
 
+  closeSpinner() {
+    console.log('end');
+    this.spinnerService.requestEnded();
+  }
 }
