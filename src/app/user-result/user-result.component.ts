@@ -7,6 +7,7 @@ import { ResultService } from '../services/result.service';
 import * as _ from 'lodash';
 import { Dictionary } from 'lodash';
 import { PersonalityTrait } from '../domains/PersonalityTrait';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-result',
@@ -17,12 +18,11 @@ export class UserResultComponent implements OnInit {
 
   public result?: Result;
   public traitResults: TriatResult[] = [];
+  private url: string = environment.serverUrl + 'api/v1/result/';
 
   constructor(private resultService: ResultService,
     private route: ActivatedRoute,
     private client: HttpClient) {
-
-
   }
 
   ngOnInit(): void {
@@ -34,7 +34,7 @@ export class UserResultComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const resultId = Number(routeParams.get('resultId'));
 
-    this.client.get<Result>("http://localhost:8080/api/v1/result/" + resultId).subscribe((data: Result) => {
+    this.client.get<Result>(this.url + resultId).subscribe((data: Result) => {
       if (data) {
         this.result = data;
 

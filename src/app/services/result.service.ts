@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, Subject, Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Result } from '../domains/Result';
 import { UserAnswer } from '../domains/UserAnswer';
 
@@ -8,7 +9,7 @@ import { UserAnswer } from '../domains/UserAnswer';
   providedIn: 'root'
 })
 export class ResultService {
-  url: string = "http://localhost:8080/api/v1/result";
+  url: string = environment.serverUrl + 'api/v1/result';
   results!: Result[];
 
   constructor(private httpClient: HttpClient) {
