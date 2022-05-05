@@ -11,6 +11,7 @@ import { ResultService } from '../services/result.service';
 export class ResultsComponent implements OnInit {
 
   results: Result[] = [];
+  errorMessage = "";
   constructor(private resultService: ResultService, private spinnerService: SpinnerService) {
 
     // TODO: insert after guaranitee that it wont be null.
@@ -23,11 +24,16 @@ export class ResultsComponent implements OnInit {
 
   getResults() {
     this.spinnerService.requestStarted();
-    this.resultService.getResults().then(res => {
-      this.results = res;
-      this.spinnerService.requestEnded();
+    this.resultService.getResults().subscribe({
+      next: next => {
+        this.results = next;
+        this.spinnerService.requestEnded();
+      },
+      error: error => {
+        this.errorMessage = "Please try later, Error occured during fetching results.";
+        this.spinnerService.requestEnded();
+      }
     });
-
   }
 
 }

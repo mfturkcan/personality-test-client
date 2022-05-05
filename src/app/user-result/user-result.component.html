@@ -1,16 +1,33 @@
 <div *ngIf="result">
-  <h3>{{result.personName}}</h3>
-  <div>{{result.gender}}</div>
-  <div>{{result.email}}</div>
-  <div>{{result.date}}</div>
+  <h5>
+    Hi {{result.personName}}!, your MBTI personality type is <span style="text-decoration: underline;">{{mbtiType |
+      uppercase}},</span>
+  </h5>
+  <div><span style="text-decoration: underline;">{{mbtiType}}:</span> {{mbtiArticle}}</div>
 
-  <div *ngFor="let trait of traitResults">
-    <h4>{{trait.groupName}}</h4>
-    <div>
-      {{trait.firstTraitName + ' : ' + trait.firstTraitPoint}}
-    </div>
-    <div>
-      {{trait.secondTraitName + ' : ' + trait.secondTraitPoint}}
+  <div *ngFor="let trait of traitResults;let i = index" class="row trait-container m-4">
+    <div class="card flex-row">
+      <img [src]="trait.groupPhoto" class="card-img-top" *ngIf="i%2 ==0" />
+      <div class="card-body">
+        <h5 class="card-title">{{trait.groupName}} : {{trait.higherTraitName}} - {{trait.higherTraitPoint}}</h5>
+        <div class="card-text">
+          <p>{{trait.firstArticle}}</p>
+          <p>{{trait.secondArticle}}</p>
+
+          <div style="text-decoration: underline;">{{trait.firstTraitName}} : {{trait.firstTraitPoint}}
+            {{trait.secondTraitName}} :
+            {{trait.secondTraitPoint}}</div>
+
+        </div>
+      </div>
+      <img [src]="trait.groupPhoto" class="card-img-top w-25" *ngIf="i%2 !=0" />
     </div>
   </div>
+
+  <a (click)="sendResults()" href="/">
+    Send results to my email : <span style="text-decoration: underline;">{{result.email}}</span>
+  </a>
+
+  <div>This test completed by {{result.personName}} in {{result.date |date : 'MMMM dd yyyy'}}.</div>
+
 </div>

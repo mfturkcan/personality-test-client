@@ -16,17 +16,16 @@ export class ResultService {
 
   }
 
-  getResults(): Promise<Result[]> {
-    return this.httpClient.get<Result>(this.url).pipe(map((data: any) => { return data; })).toPromise();
+  getResults(): Observable<any> {
+    return this.httpClient.get<Result>(this.url);
   }
 
-  sendResult(userAnswer: UserAnswer): Observable<Result> {
+  sendResult(userAnswer: UserAnswer): Observable<any> {
     // Call httpClient for adding result
-    let result = new Subject<Result>();
-    this.httpClient.post<UserAnswer>(this.url, userAnswer).subscribe((data: any) => {
-      result.next(data);
-    });
+    return this.httpClient.post<UserAnswer>(this.url, userAnswer);
+  }
 
-    return result.asObservable();
+  getResultById(id: number): Observable<any> {
+    return this.httpClient.get<Result>(this.url + '/' + id);
   }
 }

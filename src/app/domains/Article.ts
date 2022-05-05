@@ -5,7 +5,7 @@ export class Article {
     text: string,
     title: string,
     author: string,
-    image: File,
+    image: string,
     publishDate: Date
   ) {
     this.articleId = articleId
@@ -21,6 +21,6 @@ export class Article {
   text: string;
   title: string;
   author: string;
-  image: File;
+  image: string;
   publishDate: Date;
 }

@@ -25,6 +25,7 @@ export class PersonalityTestComponent implements OnInit {
   gender!: Gender;
   email!: string;
   isPublic!: boolean;
+  errorMessage = "";
 
   constructor(private questionService: QuestionService,
     private resultService: ResultService,
@@ -42,15 +43,20 @@ export class PersonalityTestComponent implements OnInit {
 
   getQuestions() {
     this.spinnerService.requestStarted();
-    this.questionService.getQuestions().then(data => {
-      this.questions = data.sort((q1, q2) => {
-        if (q1.questionNumber < q2.questionNumber) return -1;
-        else if (q1.questionNumber == q2.questionNumber) return 0;
-        else return 1;
-      });;
-
-      this.spinnerService.requestEnded();
-    });
+    this.questionService.getQuestions().subscribe({
+      next: (next: Question[]) => {
+        this.questions = next.sort((q1, q2) => {
+          if (q1.questionNumber < q2.questionNumber) return -1;
+          else if (q1.questionNumber == q2.questionNumber) return 0;
+          else return 1;
+        });
+        this.spinnerService.requestEnded();
+      },
+      error: error => {
+        this.errorMessage = "Please try later, Error occured during fetching results.";
+        this.spinnerService.requestEnded();
+      }
+    })
   }
 
   handleSubmit(formValue: any) {
@@ -75,8 +81,8 @@ export class PersonalityTestComponent implements OnInit {
     this.resultService.sendResult(user).subscribe(result => {
       if (result) {
         this.router.navigate(['/userResult', result.id]);
-        this.spinnerService.requestEnded();
       }
+      this.spinnerService.requestEnded();
     });
 
   }

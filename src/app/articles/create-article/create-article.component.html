@@ -16,7 +16,7 @@
   </div>
   <textarea name="text" class="form-control article-text" placeholder="Your Article" ngModel required></textarea>
 
-  <button type="submit" [disabled]="!articleForm.valid">Send Article</button>
+  <button type="submit" class="btn btn-info" [disabled]="!articleForm.valid">Send Article</button>
 </form>
 
 <div *ngIf="errorMessage">

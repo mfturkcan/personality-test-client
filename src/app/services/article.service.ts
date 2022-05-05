@@ -16,4 +16,8 @@ export class ArticleService {
   addArticle(articleDto: ArticleDto): Observable<any> {
     return this.httpClient.post(this.articleUrl, articleDto);
   }
+
+  getArticles(): Observable<any> {
+    return this.httpClient.get(this.articleUrl);
+  }
 }

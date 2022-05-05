@@ -13,9 +13,7 @@ export class QuestionService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getQuestions(): Promise<Question[]> {
-    return this.httpClient.get<Question[]>(this.url).pipe(map((data: Question[] | any) => {
-      return data;
-    })).toPromise();
+  getQuestions(): Observable<any> {
+    return this.httpClient.get<Question[]>(this.url);
   }
 }
