@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: 'app-footer',
@@ -23,12 +24,12 @@ import { Component } from "@angular/core";
         </a>
 
         <!-- Github -->
-        <a class="btn btn-primary btn-floating m-1" style="background-color: #333333;" href="#" role="button">
+        <a class="btn btn-primary btn-floating m-1" target="_blank" (click)="openGithubPages()" style="background-color: #333333;" href="#" role="button">
           <i class="fa fa-github"></i>
         </a>
 
         <!-- Swagger Test -->
-        <a class="btn btn-primary btn-floating m-1" style="background-color: #1d562a;" th:href="@{'/swagger'}"
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #1d562a;" target="_blank" [href]="swaggerUrl"
           role="button">
           <i class="fa fa-shield"></i>
         </a>
@@ -48,5 +49,10 @@ import { Component } from "@angular/core";
 `
 })
 export class FooterComponent {
+  swaggerUrl = environment.serverUrl;
 
+  openGithubPages() {
+    window.open("https://github.com/mfturkcan/personality-test-client");
+    window.open("https://github.com/mfturkcan/personality-types");
+  }
 }

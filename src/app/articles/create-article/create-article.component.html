@@ -1,0 +1,24 @@
+<h4>Write Your Own Post</h4>
+
+<form #articleForm="ngForm" class="article-form form-group" (ngSubmit)="handleArticleSubmit(articleForm.value)">
+  <input type="text" name="title" class="form-control" placeholder="Title" ngModel required />
+  <input type="text" name="author" class="form-control" placeholder="Your name" ngModel required />
+
+  <div class="input-group mb-3">
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" id="article-image" name="image"
+        placeholder="Head image for your post" accept="image/png, image/jpeg" ngModel>
+      <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+    </div>
+    <div class="input-group-append">
+      <span class="input-group-text" id="">Upload</span>
+    </div>
+  </div>
+  <textarea name="text" class="form-control article-text" placeholder="Your Article" ngModel required></textarea>
+
+  <button type="submit" [disabled]="!articleForm.valid">Send Article</button>
+</form>
+
+<div *ngIf="errorMessage">
+  {{errorMessage}}
+</div>
