@@ -6,7 +6,8 @@
         <div class="user-info m-3">
           <div class="user-info-circle bg-primary text-center float-left">{{article.author[0]}}</div>
           <span>{{article.author}}</span>
-          <span class="text-grey">2 days ago</span>
+          <span class="text-grey">{{calculateDays(article.publishDate) === 0 ? 'Today' :
+            calculateDays(article.publishDate) + ' days ago'}}</span>
         </div>
         <div class="card-body">
           <h4 class="card-title">{{article.title}}</h4>

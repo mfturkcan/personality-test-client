@@ -1,0 +1,17 @@
+.trait-image {
+  object-fit: contain;
+  width: 60%;
+  align-self: center;
+}
+
+.trait-content {
+  width: 85%;
+  align-self: center !important;
+
+  margin: 50px auto;
+}
+
+.traits-row {
+  gap: 20px;
+  justify-content: space-between;
+}

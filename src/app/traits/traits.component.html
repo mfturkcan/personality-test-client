@@ -1,24 +1,30 @@
-<div class="content">
-  <h5 class="pb-2">PERSONALITY TRAITS</h5>
-  <p class="text-justify">
-    Mind:
-    Introverted (I) - prefer solitary activities, think before speaking, get
-    exhausted by social interaction.
-    Extraverted (E) - prefer group activities, think while speaking, get energized
-    by social interaction.
-    Energy:
-    Intuitive (N) - imaginative, rely on their intuition, absorbed in ideas, focus
-    on what might happen.
-    Sensing (S) - down-to-earth, rely on their senses, absorbed in practical
-    matters, focus on what has happened.
-    Nature:
-    Thinking (T) - tough, follow their minds, focus on objectivity and rationality.
-    Feeling (F) - sensitive, follow their hearts, focus on harmony and
-    cooperation.
-    Tactics:
-    Judging (J) - decisive, prefer clear rules and guidelines, see deadlines as
-    sacred, seek closure.
-    Perceiving (P) - very good at improvising, prefer keeping their options open,
-    relaxed about their work, seek freedom.
-  </p>
+<div class="trait-content">
+  <h2 class="pb-2">PERSONALITY TRAITS</h2>
+  <div class="text-justify mt-4">
+    <div class="row traits-row">
+      <div *ngFor="let trait of traitsWithImages; let i = index;" class="card mb-4 col-12">
+        <img class="trait-image card-img-top" [src]="trait.image" *ngIf="i<2" />
+        <h3 class="card-header">
+          {{trait.group}}
+        </h3>
+        <div class="card-body">
+
+          <div class="card-text">
+            <div>
+              <h6>{{trait.firstTitle}}</h6> {{trait.firstArticle}}
+            </div>
+            <div class="mt-3">
+              <h6>{{trait.secondTitle}}</h6> {{trait.secondArticle}}
+            </div>
+          </div>
+        </div>
+        <img class="trait-image card-img-top" [src]="trait.image" *ngIf="i>=2" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <h3>What is your Personality Type ?</h3>
+  <a [routerLink]="['/personality-test']">Lets find out !</a>
 </div>

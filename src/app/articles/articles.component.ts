@@ -33,4 +33,18 @@ export class ArticlesComponent implements OnInit {
     })
   }
 
+  calculateDays(date: Date) {
+    var dateParts = date.toString().split("-");
+    var numberDateParts = dateParts.map(part => Number(part.trim()));
+
+    var articleDate = new Date(numberDateParts[0], numberDateParts[1] - 1, numberDateParts[1]);
+    console.log(articleDate);
+    var dateOfNow = new Date();
+    var difference = Math.abs((articleDate.getTime() - dateOfNow.getTime()) / (1000 * 3600 * 24));
+
+    if (difference < 1) return 0;
+
+    return Math.floor(difference);
+  }
+
 }
