@@ -31,7 +31,7 @@
             <div class="form-group">
               <div class="input-group">
                 <input class="form-control" type="email" #email="ngModel" required placeholder="Email ID" name="email"
-                  ngModel>
+                  ngModel email>
               </div>
             </div>
           </div>
@@ -40,13 +40,16 @@
     </div>
   </div>
 
-  <div class="form-error"
-    *ngIf="(email.invalid && email.touched) || (name.invalid && name.touched) || (gender.invalid && gender.touched)">
+  <div class="form-error" *ngIf=" (name.invalid && name.touched) || (gender.invalid && gender.touched)">
     Please fill the form to complete test
   </div>
 
+  <div class="form-error" *ngIf="email.errors && email.touched">
+    Not a valid email!
+  </div>
 
-  <div name="answers" *ngFor="let question of questions; let i = index">
+
+  <div class="my-5" *ngFor="let question of questions; let i = index">
     <div class="questionText mx-auto shadow" id="question" *ngIf="question.questionNumber == 26">
       Which word in each pair appeals to you more?
     </div>
@@ -59,7 +62,7 @@
         <input type="radio" value="true" required [name]="'answer'+i" id="true_answer" ngModel>
         <span>{{question.answerTrue}}</span>
       </label>
-      <div *ngIf="!question.question" class="user-result-circle text-center ">
+      <div *ngIf="!question.question" class="user-result-circle text-center">
         {{i}}
       </div>
 

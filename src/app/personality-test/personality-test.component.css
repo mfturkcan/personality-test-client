@@ -127,16 +127,13 @@ label.radio input:hover+span {
   gap: 17px;
   border: 10px solid;
   border-radius: 25px;
-  width: 700px;
   border-color: white;
   padding: 20px;
-  margin: 10px 0px;
 }
 
 .question-part {
   cursor: pointer;
   display: block;
-
 }
 
 .question-part input {
@@ -181,3 +178,5 @@ label.radio input:hover+span {
   margin-bottom: 25px;
   cursor: pointer;
 }
+
+.answers {}
