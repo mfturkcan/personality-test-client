@@ -5,6 +5,22 @@
   </h5>
   <div><span style="text-decoration: underline;">{{mbtiType}}:</span> {{mbtiArticle}}</div>
 
+  <div class="row my-5">
+    <div class="col-6">
+      <h6>Strenghts</h6>
+      <ul *ngFor="let strength of strengths" class="list-group">
+        <li class="list-group-item">{{strength}}</li>
+      </ul>
+    </div>
+
+    <div class="col-6">
+      <h6>Weaknesses</h6>
+      <ul *ngFor="let weakness of weaknesses" class="list-group">
+        <li class="list-group-item">{{weakness}}</li>
+      </ul>
+    </div>
+  </div>
+
   <div *ngFor="let trait of traitResults;let i = index" class="row trait-container m-4">
     <div class="card flex-row">
       <img [src]="trait.groupPhoto" class="card-img-top" *ngIf="i%2 ==0" />

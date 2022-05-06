@@ -8,7 +8,7 @@ import * as _ from 'lodash';
 import { Dictionary } from 'lodash';
 import { PersonalityTrait } from '../domains/PersonalityTrait';
 import { SpinnerService } from '../core/spinner/spinner.service';
-import personalityTypes from '../PersonalityTypes';
+import personalityTypes, { personalitySW } from '../PersonalityTypes';
 
 @Component({
   selector: 'app-user-result',
@@ -22,6 +22,8 @@ export class UserResultComponent implements OnInit {
   public errorMessage = "";
   public mbtiType: string = "";
   public mbtiArticle = "";
+  public strengths:string[] = [];
+  public weaknesses: string[] = [];
 
   private articles = [
     {
@@ -86,6 +88,8 @@ export class UserResultComponent implements OnInit {
 
           }).value();
         this.mbtiArticle = personalityTypes[this.mbtiType];
+        this.strengths = personalitySW[this.mbtiType].strengths;
+        this.weaknesses = personalitySW[this.mbtiType].weaknesses;
         console.log(this.mbtiType);
 
         for (let i = 0; i < this.traitResults.length; i++) {

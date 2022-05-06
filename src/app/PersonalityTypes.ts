@@ -32,4 +32,82 @@ const personalityTypes: { [char: string]: string } = {
   well read, enjoy expanding their knowledge and passing it on to others. Forceful in presenting their ideas.`
 }
 
+export interface PersonalityFeatures {
+  weaknesses: string[],
+  strengths: string[]
+}
+
+
+export const personalitySW: { [char: string]: PersonalityFeatures } = {
+  "ISTJ": {
+    strengths: ["Detail-oriented", "Realistic", "Present-focused", "Observant", "Logical and practical", "Orderly and organized"],
+    weaknesses: ["Judgmental", "Subjective", "Tends to blame others", "Insensitive"],
+  },
+  "ISFJ": {
+    strengths: ["Reliable", "Practical", "Sensitive", "Eye for detail"],
+    weaknesses: ["Dislikes abstract concepts", "Avoids confrontation", "Dislikes change", "Neglects own needs"]
+  },
+  "INFJ": {
+    strengths: ["Sensitive to the needs of others", "Reserved", "Highly creative and artistic", "Focused on the future", "Values close, deep relationships", "Enjoys thinking about the meaning of life", "Idealistic"],
+    weaknesses: ["Can be overly sensitive", "Sometimes difficult to get to know", "Can have overly high expectations", "Stubborn", "Dislikes confrontation"]
+  },
+  "INTJ": {
+    strengths: ["Enjoys theoretical and abstract concepts", "High expectations", "Good at listening", "Takes criticism well", "Self-confident and hard-working"],
+    weaknesses: ["Can be overly analytical and judgmental", "Very perfectionistic", "Dislikes talking about emotions", "Sometimes seems callous or insensitive"]
+  },
+  "ISTP": {
+    strengths: ["Logical", "Learns by experience", "Action-oriented", "Realistic and practical", "Enjoys new things", "Self-confident and easygoing"],
+    weaknesses: ["Difficult to get to know", "Insensitive", "Grows bored easily", "Risk-taker", "Does not like commitment"]
+  },
+  "ISFP": {
+    strengths: ["Very aware of their environment", "Practical", "Enjoys hands-on learning", "Loyal to values and beliefs"],
+    weaknesses: ["Dislikes abstract, theoretical information", "Reserved and quiet", "Strong need for personal space", "Dislikes arguments and conflict"]
+  },
+  "INFP": {
+    strengths: ["Loyal and devoted", "Sensitive to feelings", "Caring and interested in others", "Works well alone", "Values close relationships", "Good at seeing 'the big picture'"],
+    weaknesses: ["Can be overly idealistic", "Tends to take everything personally", "Difficult to get to know", "Sometimes loses sight of the little things", "Overlooks details"]
+  },
+  "INTP": {
+    strengths: ["Logical and objective", "Abstract thinker", "Independent", "Loyal and affectionate with loved ones"],
+    weaknesses: ["Difficult to get to know", "Can be insensitive", "Prone to self-doubt", "Struggles to follow rules", "Has trouble expressing feelings"]
+  },
+  "ESTP": {
+    strengths: ["Gregarious, funny, and energetic", "Influential and persuasive", "Action-oriented", "Adaptable and resourceful", "Observant"],
+    weaknesses: ["Impulsive", "Competitive", "Dramatic at times", "Easily bored", "Insensitive"]
+  },
+  "ESFP": {
+    strengths: ["Optimistic and gregarious", "Enjoys people and socializing", "Focused on the present, spontaneous", "Practical"],
+    weaknesses: ["Dislikes abstract theories", "Becomes bored easily", "Does not plan ahead", "Impulsive"]
+  },
+  "ENFP": {
+    strengths: ["Warm and enthusiastic", "Empathetic and caring", "Strong people skills", "Strong communication skills", "Fun and spontaneous", "Highly creative"],
+    weaknesses: ["Needs approval from others", "Disorganized", "Tends to get stressed out easily", "Can be overly emotional", "Overthinks", "Struggles to follow rules"]
+  },
+  "ENTP": {
+    strengths: ["Innovative", "Creative", "Great conversationalist", "Enjoys debating", "Values knowledge"],
+    weaknesses: ["Can be argumentative", "Dislikes routines and schedules", "Does not like to be controlled", "Unfocused", "Insensitive"]
+  },
+  "ESTJ": {
+    strengths: ["Practical and realistic", "Dependable", "Self-confident", "Hard-working", "Traditional", "Strong leadership skills"],
+    weaknesses: ["Insensitive", "Inflexible", "Not good at expressing feelings", "Argumentative", "Bossy"]
+  },
+  "ESFJ": {
+    strengths: ["Kind and loyal", "Outgoing", "Organized", "Practical and dependable", "Enjoy helping others", "Conscientious"],
+    weaknesses: ["Needy", "Approval-seeking", "Sensitive to criticism", "Dislike change", "Intolerant", "Controlling"]
+  },
+  "ENFJ": {
+    strengths: ["Outgoing and warm-hearted", "Empathetic", "Wide social circle", "Encouraging", "Organized", "Affectionate", "Persuasive"],
+    weaknesses: ["Approval-seeking", "Overly sensitive", "Indecisive", "Self-sacrificing", "Rigid and uncompromising", "Overprotective", "Manipulative"]
+  },
+  "ENTJ": {
+    strengths: ["Strong leadership skills", "Self-assured", "Well-organized", "Good at making decisions", "Assertive and outspoken", "Strong communication skills"],
+    weaknesses: ["Impatient", "Stubborn", "Insensitive", "Aggressive", "Intolerant"]
+  }
+
+}
+
+
+
+
+
 export default personalityTypes;
