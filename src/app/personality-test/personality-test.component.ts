@@ -24,7 +24,7 @@ export class PersonalityTestComponent implements OnInit {
   name!: string;
   gender!: Gender;
   email!: string;
-  isPublic!: boolean;
+  isPublic: boolean = false;
   errorMessage = "";
 
   constructor(private questionService: QuestionService,
@@ -78,11 +78,15 @@ export class PersonalityTestComponent implements OnInit {
 
     let user = new UserAnswer(this.answers, this.gender, this.name, this.email, this.isPublic);
 
-    this.resultService.sendResult(user).subscribe(result => {
-      if (result) {
+    this.resultService.sendResult(user).subscribe({
+      next: result => {
         this.router.navigate(['/userResult', result.id]);
+        this.spinnerService.requestEnded();
+      },
+      error: error => {
+        this.spinnerService.requestEnded();
+        alert("Server related error occured!");
       }
-      this.spinnerService.requestEnded();
     });
 
   }

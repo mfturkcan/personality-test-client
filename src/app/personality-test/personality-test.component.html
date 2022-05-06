@@ -84,7 +84,7 @@
 
   <div class="row w-50 ml-auto mr-auto align-items-center justify-content-center center p-4">
     <label class="col-9">Do you want to share it publicly?</label>
-    <input class="col-3 checkbox" type="checkbox" name="isPublic" ngModel>
+    <input class="col-3 checkbox" type="checkbox" [defaultValue]="false" name="isPublic" ngModel>
   </div>
 
   <div class="form-warning" *ngIf="questionForm.invalid" (click)="scrollToTop()">

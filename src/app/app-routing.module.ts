@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ArticlesComponent } from './articles/articles.component';
 import { CreateArticleComponent } from './articles/create-article/create-article.component';
 import { ErrorPageComponent } from './core/error-page/error-page.component';
+import { UsedTechsComponent } from './core/used-techs/used-techs.component';
 import { IndexComponent } from './index/index.component';
 import { PersonalityTestComponent } from './personality-test/personality-test.component';
 import { ResultsComponent } from './results/results.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'personality-test', component: PersonalityTestComponent },
   { path: 'results', component: ResultsComponent },
   { path: 'userResult/:resultId', component: UserResultComponent },
+  { path: 'usedTechs', component: UsedTechsComponent },
   { path: '**', component: ErrorPageComponent }
 ];
 

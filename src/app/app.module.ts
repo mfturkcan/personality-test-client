@@ -25,6 +25,8 @@ import {
   AngularFireUploadTask,
 } from '@angular/fire/compat/storage';
 import { environment } from 'src/environments/environment';
+import { ArticleComponent } from './articles/article/article.component';
+import { UsedTechsComponent } from './core/used-techs/used-techs.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { environment } from 'src/environments/environment';
     UserResultComponent,
     SpinnerComponent,
     ToastComponent,
-    CreateArticleComponent
+    CreateArticleComponent,
+    ArticleComponent,
+    UsedTechsComponent
   ],
   imports: [
     BrowserModule,

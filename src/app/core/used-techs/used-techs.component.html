@@ -1,0 +1,19 @@
+<h3 class="mb-5">USED TECHNOLOGIES FOR DEVELOPING THIS SITE</h3>
+
+<div *ngFor="let tech of techs" class="mb-5 row" style="gap: 20px;">
+  <h4 class="col-12">{{tech.type}}</h4>
+  <div class="card mb-5 center col-5 mx-auto p-4" *ngFor="let t of tech.techs">
+
+    <img [src]="t.icon" class="card-img-top mx-auto" style="width: 200px; height: 200px;" />
+
+
+    <div class="card-body">
+      <div class="card-title">
+        <h6>{{t.name}}</h6>
+      </div>
+      <p class="card-text">{{t.description}}</p>
+    </div>
+
+    <hr>
+  </div>
+</div>
