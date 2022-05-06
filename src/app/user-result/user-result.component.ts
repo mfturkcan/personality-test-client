@@ -22,7 +22,7 @@ export class UserResultComponent implements OnInit {
   public errorMessage = "";
   public mbtiType: string = "";
   public mbtiArticle = "";
-  public strengths:string[] = [];
+  public strengths: string[] = [];
   public weaknesses: string[] = [];
 
   private articles = [
@@ -79,7 +79,10 @@ export class UserResultComponent implements OnInit {
               higherTraitName = secondTraitName;
               higherPoint = traitDic[1].totalPoint;
             }
-            if (higherTraitName[0]) this.mbtiType += higherTraitName[0];
+            if (higherTraitName[0]) {
+              if (higherTraitName == "INTUITIVE") this.mbtiType += 'N';
+              else this.mbtiType += higherTraitName[0];
+            }
             return new TriatResult(name.split('_')[2],
               traitDic[0].personalityTraitType.split('_')[2],
               traitDic[1].personalityTraitType.split('_')[2],
