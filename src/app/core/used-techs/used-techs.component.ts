@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { techsWithImages, TechType } from 'src/app/domains/types/Tech';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-used-techs',
@@ -9,6 +10,7 @@ import { techsWithImages, TechType } from 'src/app/domains/types/Tech';
 export class UsedTechsComponent implements OnInit {
 
   techs = techsWithImages;
+  backendLink = environment.serverUrl;
 
   constructor() { }
 
